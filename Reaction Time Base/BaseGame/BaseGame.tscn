@@ -1,0 +1,88 @@
+[gd_scene load_steps=10 format=2]
+
+[ext_resource path="res://Pictures/Gamemodes.png" type="Texture" id=1]
+[ext_resource path="res://BaseGame/SubTitleScreen.gd" type="Script" id=2]
+[ext_resource path="res://Buttons/GameMenu/Back.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Buttons/GameMenu/Game1.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Buttons/GameMenu/Game3.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Buttons/GameMenu/Game2.tscn" type="PackedScene" id=6]
+[ext_resource path="res://fade_in/FadeIn.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Buttons/MenuButton.gd" type="Script" id=8]
+[ext_resource path="res://Music/520579__divoljud__clickglass.wav" type="AudioStream" id=9]
+
+[node name="BaseGame" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Menu" type="VBoxContainer" parent="."]
+margin_left = 120.0
+margin_top = 80.0
+margin_right = 1160.0
+margin_bottom = 640.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect" type="TextureRect" parent="Menu"]
+margin_right = 1040.0
+margin_bottom = 228.0
+texture = ExtResource( 1 )
+stretch_mode = 4
+
+[node name="CenterRow" type="HBoxContainer" parent="Menu"]
+margin_top = 232.0
+margin_right = 1040.0
+margin_bottom = 560.0
+size_flags_vertical = 3
+
+[node name="Buttons" type="VBoxContainer" parent="Menu/CenterRow"]
+margin_right = 1040.0
+margin_bottom = 328.0
+rect_min_size = Vector2( 360, 60 )
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_constants/separation = 20
+alignment = 1
+
+[node name="Game1" parent="Menu/CenterRow/Buttons" instance=ExtResource( 4 )]
+margin_right = 1040.0
+margin_bottom = 67.0
+script = ExtResource( 8 )
+scene_to_load = "res://BaseGame/Game1/Game1.tscn"
+
+[node name="Game2" parent="Menu/CenterRow/Buttons" instance=ExtResource( 6 )]
+margin_top = 87.0
+margin_right = 1040.0
+margin_bottom = 154.0
+script = ExtResource( 8 )
+scene_to_load = "res://BaseGame/Game2/Game2.tscn"
+
+[node name="Game3" parent="Menu/CenterRow/Buttons" instance=ExtResource( 5 )]
+margin_top = 174.0
+margin_right = 1040.0
+margin_bottom = 241.0
+script = ExtResource( 8 )
+scene_to_load = "res://BaseGame/Game3/Game3.tscn"
+
+[node name="Back" parent="Menu/CenterRow/Buttons" instance=ExtResource( 3 )]
+margin_top = 261.0
+margin_right = 1040.0
+margin_bottom = 328.0
+script = ExtResource( 8 )
+scene_to_load = "res://TitleScreen.tscn"
+
+[node name="FadeIn" parent="." instance=ExtResource( 7 )]
+visible = false
+
+[node name="Click" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 9 )
+bus = "FX"
+[connection signal="pressed" from="Menu/CenterRow/Buttons/Game1" to="." method="_on_Game1_pressed"]
+[connection signal="pressed" from="Menu/CenterRow/Buttons/Game2" to="." method="_on_Game2_pressed"]
+[connection signal="pressed" from="Menu/CenterRow/Buttons/Game3" to="." method="_on_Game3_pressed"]
+[connection signal="pressed" from="Menu/CenterRow/Buttons/Back" to="." method="_on_Back_pressed"]
+[connection signal="fade_finished" from="FadeIn" to="." method="_on_FadeIn_fade_finished"]

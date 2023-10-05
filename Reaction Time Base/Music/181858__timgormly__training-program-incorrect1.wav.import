@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/181858__timgormly__training-program-incorrect1.wav-f06e8b1892da5b6f8ba267e4d776d189.sample"
+
+[deps]
+
+source_file="res://Music/181858__timgormly__training-program-incorrect1.wav"
+dest_files=[ "res://.import/181858__timgormly__training-program-incorrect1.wav-f06e8b1892da5b6f8ba267e4d776d189.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0
